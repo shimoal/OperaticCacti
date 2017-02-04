@@ -1,35 +1,19 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import NavLink from './NavLink'
 
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      images: window.list
-    };
-
-  }
-
-  componentDidMount() {
-    axios.get('/')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-
+export default React.createClass({
   render() {
     return (
-        <div>
-        <a href="#/tours"><h1> Hello World</h1></a>
-        </div>
+      <div>
+        <ul role="nav" className="nav nav-pills">
+          <li><NavLink to="/" onlyActiveOnIndex>Home</NavLink></li>
+          <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/AllLists">AllLists</NavLink></li>
+          <li><NavLink to="/LogIn">LogIn</NavLink></li>
+          <li><NavLink to="/SignUp">SignUp</NavLink></li>
+        </ul>
+        {this.props.children}
+      </div>
     )
   }
-}
-
-export default App;
+})
