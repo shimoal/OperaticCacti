@@ -72,7 +72,14 @@ window.list = [
 
 
 
-export default React.createClass({
+export default class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      tours: window.list
+    }
+  }
+
   render() {
     return (
       <div>
@@ -85,11 +92,11 @@ export default React.createClass({
         <div className="space">
         </div>
         <div className="row">
-          { window.list.map((listElement)=>
+          { this.state.tours.map((listElement)=>
             <ListElement listElement={listElement}/> 
           )}
         </div>
       </div>
     )
   }
-})
+}
