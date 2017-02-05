@@ -1,15 +1,14 @@
 var express = require('express');
 var path = require('path');
-app.use(compression());
-
+var compression = require('compression');
 var app = express();
-
+app.use(compression());
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
 var PORT = process.env.PORT || 1337;
+var controllers = require('./controllers.js');
 
-var compression = require('compression');
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,10 +16,14 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname + '/../public/index.html'));
+
+app.get('/allTours', function (req, res) {
+  controllers.tours.getAll(req, res);
 });
 
+app.get('/tours/:id', function (req, res) {
+  controllers.tours.getOne(req, res);
+});
 
 
 app.listen(PORT, function() {

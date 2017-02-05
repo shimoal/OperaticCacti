@@ -1,5 +1,6 @@
 import React from 'react'
 import ListElement from './ListElement'
+import axios from 'axios'
 
 window.list = [
   {
@@ -78,6 +79,21 @@ export default class Home extends React.Component {
     this.state = {
       tours: window.list
     }
+  }
+
+  getAllTours() {
+    return axios.get('/#/allTours')
+      .then(function (response) {
+        console.log('insdie then');
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  componentDidMount() {
+    this.getAllTours();
   }
 
   render() {

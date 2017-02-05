@@ -48,3 +48,27 @@ a {
   font-weight: 700 !important;
   margin-right: 5px;
 }
+
+
+.singleTour img {
+  padding: 50px;
+  width: 100%;
+}
+
+.singleTour p {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.singleTour button {
+  font-size: 20px;
+  background-color: crimson;
+  color: white;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: red;
+}
+
